@@ -26,46 +26,43 @@ const { producto, index, inverted } = Astro.props as Props;
     <h3 class="text-2xl md:text-7xl font-semibold">{producto.nombre}</h3>
     <p class="text-sm md:text-lg text-foreground/70">{producto.description}</p>
   </div>
-  <div class="flex md:w-2/3 w-full">
-    <img
-      data-index={index}
-      src={producto.image}
-      alt={producto.nombre}
-      class="product-image w-full h-screen object-cover"
-    />
+
+  <div class="md:w-2/3 w-full relative overflow-hidden h-screen">
+    <div class="w-full h-full relative">
+      <img
+        data-index={index}
+        src={producto.image}
+        alt={producto.nombre}
+        class="product-image w-full h-full object-cover absolute inset-0"
+      />
+    </div>
   </div>
 </li>
 
-<style>
-  /* help browser optimize transforms during scroll animations */
-  .product-image {
-    will-change: transform;
-  }
-</style>
-
-<script type="module">
+<script>
   import { gsap } from "gsap";
   import ScrollTrigger from "gsap/ScrollTrigger";
   gsap.registerPlugin(ScrollTrigger);
 
-  // Wait for load to ensure images/layout are ready
   const onReady = () => {
     const images = document.querySelectorAll(".product-image");
 
     images.forEach((img) => {
-      // animate via transforms (yPercent / scale) to avoid layout thrashing
+      // wait for the image to be fully loaded before creating the ScrollTrigger animation
+
       gsap.fromTo(
         img,
-        { yPercent: 0, scale: 1.04 },
+        { height: "0%", scale: 1.04 },
         {
-          yPercent: -10,
+          height: "100%",
           scale: 1,
-          ease: "none",
+          ease: "power3.in",
           scrollTrigger: {
             trigger: img,
-            start: "top bottom", // when top of image hits bottom of viewport
-            end: "bottom top", // when bottom of image hits top of viewport
+            start: "top 60%",
+            end: "+=600",
             scrub: 0.6,
+            // markers: true,
           },
         },
       );

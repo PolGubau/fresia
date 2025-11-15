@@ -21,6 +21,7 @@
 :root {
   font-optical-sizing: auto;
   font-family: "StackSans", sans-serif;
+  scroll-behavior: smooth;
   @apply bg-background text-foreground;
 }
 
