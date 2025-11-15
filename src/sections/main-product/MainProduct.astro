@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+const foto = {
+  url: "https://picsum.photos/800/600",
+};
+---
+
+<section class="p-20">
+  <header class="flex flex-col gap-2 justify-center text-center">
+    <h2 class="text-3xl md:text-4xl xl:text-6xl">Amb flors millor</h2>
+    <p>Aquest nadal tenim el ram perfecte per a qui estimes</p>
+  </header>
+
+  <Image
+    src={foto.url}
+    alt="Ram de flors de Frèsia"
+    width={800}
+    height={600}
+    class="mx-auto bg-neutral-200"
+  />
+</section>

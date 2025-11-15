@@ -1,0 +1,51 @@
+---
+const fotos = [
+  {
+    src: "https://picsum.photos/400/800",
+    alt: "Foto 1",
+    height: 400,
+  },
+  {
+    src: "https://picsum.photos/350/750",
+    alt: "Foto 2",
+    height: 250,
+  },
+  {
+    src: "https://picsum.photos/510/670",
+    alt: "Foto 3",
+    height: 300,
+  },
+  {
+    src: "https://picsum.photos/600/570",
+    alt: "Foto 3",
+    height: 300,
+  },
+];
+---
+
+<section class="min-h-screen flex flex-col gap-20 overflow-x-hidden">
+  <header class="p-8 pt-48 flex flex-col gap-8">
+    <h1
+      class="text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[9.2rem] font-semibold text-balance"
+    >
+      Ja és nadal a
+      <span class="text-primary">Frèsia</span>, <br />ho celebrem?
+    </h1>
+    <p class="xl:text-xl">No se qué posar aquí, yu després em dius</p>
+  </header>
+
+  <ul class="flex gap-4 items-center w-screen justify-center overflow-hidden">
+    {
+      fotos.map((foto) => (
+        <li>
+          <img
+            src={foto.src}
+            alt={foto.alt}
+            height={foto.height}
+            class="w-full h-full bg-neutral-200 object-cover object-center"
+          />
+        </li>
+      ))
+    }
+  </ul>
+</section>

@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+ 
+@font-face {
+  font-family: "StackSans";
+  src: url("/fonts/stack-sans.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme{
+  --color-primary: #466358;
+  --color-secondary: #C7879F;
+  --color-background: #fff;
+  --color-foreground: #222;
+  --breakpoint-3xl: 1728px;
+}
+
+
+:root {
+  font-optical-sizing: auto;
+  font-family: "StackSans", sans-serif;
+  @apply bg-background text-foreground;
+}
+
