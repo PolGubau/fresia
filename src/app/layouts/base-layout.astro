@@ -11,10 +11,12 @@ import "~/app/styles/global.css";
 		<meta name="generator" content={Astro.generator} />
 		<title>Ja és nadal a Frèsia</title>
 	</head>
-	<body>
-		<header class="flex gap-4 items-center justify-between p-4">
-			<strong class="text-lg">Frèsia</strong>
-			<nav class="flex gap-4 items-center">
+	<body
+		><header
+			class="flex gap-4 items-center justify-between p-4 pb-2 sticky top-0 backdrop-blur-md z-10"
+		>
+			<strong class="text-lg z-20">Frèsia</strong>
+			<nav class="flex gap-4 items-center z-20">
 				<a href="#find-us" class="hover:underline">Troban's</a>
 				<a
 					href="https://www.fresiamataro.com/"
@@ -23,17 +25,28 @@ import "~/app/styles/global.css";
 					rel="noopener noreferrer">Botiga online</a
 				>
 			</nav>
+			<div
+				class="inset-0 w-full h-full absolute bg-linear-180 from-background/80"
+			>
+			</div>
 		</header>
-		<!--  -->
-		<main class="flex flex-col gap-32">
-			<slot />
-		</main>
-		<!--  -->
+		<div id="smooth-wrapper">
+			<div id="smooth-content" class="relative min-h-screen">
+				<!--  -->
+				<main class="flex flex-col gap-32">
+					<slot />
+				</main>
+				<!--  -->
 
-		<footer class="flex flex-col w-full items-center gap-4 py-20" id="find-us">
-			<p>Carrer d'En Palau, 22, Mataró</p>
-			<p>© 2025 Frèsia</p>
-		</footer>
+				<footer
+					class="flex flex-col w-full items-center gap-4 py-20"
+					id="find-us"
+				>
+					<p>Carrer d'En Palau, 22, Mataró</p>
+					<p>© 2025 Frèsia</p>
+				</footer>
+			</div>
+		</div>
 	</body>
 </html>
 
@@ -45,3 +58,22 @@ import "~/app/styles/global.css";
 		height: 100%;
 	}
 </style>
+
+<script>
+	import { gsap } from "gsap";
+	import ScrollSmoother from "gsap/ScrollSmoother";
+	import ScrollTrigger from "gsap/ScrollTrigger";
+	gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+	function animateHeading() {
+		ScrollSmoother.create({
+			smooth: 1,
+			wrapper: "#smooth-wrapper",
+			content: "#smooth-content",
+			effects: true,
+			smoothTouch: 0.1,
+		});
+	}
+
+	animateHeading();
+</script>

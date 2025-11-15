@@ -1,0 +1,77 @@
+---
+export interface Producto {
+  nombre: string;
+  description: string;
+  image: string;
+}
+
+export interface Props {
+  producto: Producto;
+  index: number;
+  inverted?: boolean;
+}
+
+const { producto, index, inverted } = Astro.props as Props;
+---
+
+<li
+  class="flex w-full h-full gap-8 items-center max-md:flex-col-reverse"
+  class:list={[
+    {
+      "flex-row-reverse": inverted,
+    },
+  ]}
+>
+  <div class="p-4 flex flex-col gap-2 justify-center h-full md:w-1/3 w-full">
+    <h3 class="text-2xl md:text-7xl font-semibold">{producto.nombre}</h3>
+    <p class="text-sm md:text-lg text-foreground/70">{producto.description}</p>
+  </div>
+  <div class="flex md:w-2/3 w-full">
+    <img
+      data-index={index}
+      src={producto.image}
+      alt={producto.nombre}
+      class="product-image w-full h-screen object-cover"
+    />
+  </div>
+</li>
+
+<style>
+  /* help browser optimize transforms during scroll animations */
+  .product-image {
+    will-change: transform;
+  }
+</style>
+
+<script type="module">
+  import { gsap } from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Wait for load to ensure images/layout are ready
+  const onReady = () => {
+    const images = document.querySelectorAll(".product-image");
+
+    images.forEach((img) => {
+      // animate via transforms (yPercent / scale) to avoid layout thrashing
+      gsap.fromTo(
+        img,
+        { yPercent: 0, scale: 1.04 },
+        {
+          yPercent: -10,
+          scale: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: img,
+            start: "top bottom", // when top of image hits bottom of viewport
+            end: "bottom top", // when bottom of image hits top of viewport
+            scrub: 0.6,
+          },
+        },
+      );
+    });
+  };
+
+  if (document.readyState === "complete") onReady();
+  else window.addEventListener("load", onReady);
+</script>

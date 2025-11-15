@@ -1,0 +1,39 @@
+<h1
+  id="heading"
+  class="text-4xl overflow-hidden sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem] 3xl:text-[15rem] font-semibold text-balance"
+>
+  <span class="line-1 text-nowrap"> Ja és nadal a Frèsia,</span>
+  <span class="line-2 text-nowrap"> ho celebrem? </span>
+</h1>
+
+<script>
+  import { gsap } from "gsap";
+  import SplitText from "gsap/SplitText";
+  gsap.registerPlugin(SplitText);
+
+  function animateHeading() {
+    let splits = [];
+    document.querySelectorAll(".line-1, .line-2").forEach((line) => {
+      const split = SplitText.create(line, {
+        type: "chars",
+        mask: "words",
+        propIndex: true,
+      });
+      splits.push(split);
+      gsap.from(split.chars, {
+        y: 100,
+        rotation: "random([-20,20])",
+        ease: "back.out",
+        autoAlpha: 0,
+        onComplete: () => {
+          // split.revert();
+        },
+        stagger: 0.04,
+      });
+    });
+  }
+
+  document.fonts.ready.then(() => {
+    animateHeading();
+  });
+</script>

@@ -5,13 +5,14 @@ const foto = {
 };
 ---
 
-<section class="p-20">
+<section class="p-20 flex flex-col gap-36">
   <header class="flex flex-col gap-2 justify-center text-center">
     <h2 class="text-3xl md:text-4xl xl:text-6xl">Amb flors millor</h2>
     <p>Aquest nadal tenim el ram perfecte per a qui estimes</p>
   </header>
 
   <Image
+    id="main-product-image"
     src={foto.url}
     alt="Ram de flors de Frèsia"
     width={800}
@@ -19,3 +20,25 @@ const foto = {
     class="mx-auto bg-neutral-200"
   />
 </section>
+
+<script>
+  import { gsap } from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  // main-product-image; the image goes up slow and it scales up a bit on scroll, it ends above the text
+
+  gsap.fromTo(
+    "#main-product-image",
+    { y: 0, scale: 1 },
+    {
+      y: -150,
+      scale: 1.2,
+      scrollTrigger: {
+        trigger: "#main-product-image",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+      },
+    },
+  );
+</script>
