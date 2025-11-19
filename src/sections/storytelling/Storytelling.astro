@@ -14,12 +14,14 @@ const availableFlowers = [
 ---
 
 <section class="flex flex-col gap-10 items-center py-20 px-8">
-  <header class="flex gap-4 items-center pb-20 flex-col text-5xl text-center">
+  <header
+    class="flex gap-4 items-center pb-20 flex-col text-2xl md:text-5xl text-center"
+  >
     <span>Descobreix la nostra varietat en</span>
     <MorphingText
       client:load
       texts={availableFlowers}
-      className="w-full text-7xl"
+      className="w-full text-5xl md:text-7xl"
     />
   </header>
   <AppearingText />

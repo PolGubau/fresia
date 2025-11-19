@@ -63,6 +63,9 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
   // Renderer size used to set the meshLine resolution
   const { width, height } = useThree((state) => state.size)
 
+  // Choose group position responsively: on large screens offset on X (-2), on small screens center it
+  const groupPos = width >= 1024 ? [-2, 4, 0] : [0, 4, 0]
+
   // Catmull-Rom curve defines the smooth band shape; we initialise with 4 points
   const [curve] = useState(() => new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()]))
 
@@ -132,8 +135,8 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 
   return (
     <>
-      {/* group: anchor point offset for the whole band/card assembly */}
-      <group position={[-2, 4, 0]}>
+      {/* group: anchor point offset for the whole band/card assembly (responsive) */}
+      <group position={groupPos}>
         {/* fixed anchor: the start of the rope (does not move) */}
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
 
