@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets";
+---
+
+<section class="pt-20">
+  <div class="relative w-screen h-[80vh] overflow-hidden">
+    <Image
+      width={1200}
+      height={800}
+      src="https://picsum.photos/1200/800"
+      alt="Aparador de flores Frèsia"
+      class="w-full h-[80vh] object-cover object-center"
+    />
+
+    <nav
+      class="w-full flex justify-between gap-4 absolute bottom-0 left-0 p-4 md:p-8 text-white"
+    >
+      <div
+        class="flex gap-2 items-center p-2 bg-foreground/30 rounded-full backdrop-blur-md px-2"
+      >
+        <a> @fresia </a>
+        <a> 654321987 </a>
+      </div>
+
+      <div
+        class="flex gap-2 items-center p-2 bg-foreground/30 rounded-full backdrop-blur-md px-2"
+      >
+        <a> Carrer d'En Palau, 22, Mataró </a>
+      </div>
+    </nav>
+  </div>
+</section>

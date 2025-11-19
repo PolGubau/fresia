@@ -1,13 +1,26 @@
-<section class="flex items-center flex-col gap-4">
-  <p class="max-w-2xl px-10 text-balance text-center mx-auto">
-    lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-  </p>
-  <p class="max-w-2xl px-10 text-balance text-center mx-auto">
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero, enim
-    aliquam, aut perspiciatis facilis harum vero placeat assumenda commodi eius
-    vitae repellat dolo
-  </p>
-  <p class="max-w-2xl px-10 text-balance text-center mx-auto">
-    lorem ipsum dolor sit amet consectetur adipisicing elit
-  </p>
+---
+import { MorphingText } from "~/shared/ui/morphing-text";
+import AppearingText from "./AppearingText.astro";
+const availableFlowers = [
+  "Poinsettia",
+  "Roses",
+  "Tulipes",
+  "Orquídies",
+  "Lliris",
+  "Gessamins",
+  "Narcisos",
+  "Margarides",
+];
+---
+
+<section class="flex flex-col gap-10 items-center py-20 px-8">
+  <header class="flex gap-4 items-center pb-20 flex-col text-5xl text-center">
+    <span>Descobreix la nostra varietat en</span>
+    <MorphingText
+      client:load
+      texts={availableFlowers}
+      className="w-full text-7xl"
+    />
+  </header>
+  <AppearingText />
 </section>

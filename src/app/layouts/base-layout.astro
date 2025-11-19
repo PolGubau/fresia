@@ -1,5 +1,6 @@
 ---
 import "~/app/styles/global.css";
+import Footer from "~/sections/footer/Footer.astro";
 ---
 
 <!doctype html>
@@ -37,14 +38,7 @@ import "~/app/styles/global.css";
 					<slot />
 				</main>
 				<!--  -->
-
-				<footer
-					class="flex flex-col w-full items-center gap-4 py-20"
-					id="find-us"
-				>
-					<p>Carrer d'En Palau, 22, Mataró</p>
-					<p>© 2025 Frèsia</p>
-				</footer>
+				<Footer />
 			</div>
 		</div>
 	</body>

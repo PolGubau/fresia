@@ -1,0 +1,47 @@
+---
+// Landing section to show how to take care of the poinsettia, as a carousel of tips navigable by arrows, each tip will have a title, an image and a description
+const tips = [
+  {
+    title: "Ubicación",
+    description:
+      "Coloca la poinsettia en un lugar con luz indirecta brillante, evitando la luz solar directa que puede dañar sus hojas.",
+    image: "https://picsum.photos/1200/800",
+  },
+  {
+    title: "Riego",
+    description:
+      "Riega la planta cuando la capa superior del suelo esté seca al tacto. Evita el exceso de agua para prevenir el encharcamiento.",
+    image: "https://picsum.photos/1200/800",
+  },
+  {
+    title: "Temperatura",
+    description:
+      "Mantén la poinsetia en un ambiente con temperaturas entre 18-22°C. Evita corrientes de aire frío o caliente.",
+    image: "https://picsum.photos/1200/800",
+  },
+  {
+    title: "Fertilización",
+    description:
+      "Fertiliza la planta cada 4-6 semanas durante la temporada de crecimiento con un fertilizante equilibrado.",
+    image: "https://picsum.photos/1200/800",
+  },
+];
+---
+
+<ul class="flex flex-col gap-20">
+  {
+    tips.map((tip) => (
+      <li class="flex flex-col md:flex-row gap-8 md:gap-16 items-center">
+        <img
+          src={tip.image}
+          alt={tip.title}
+          class="w-full md:w-1/2 h-auto bg-neutral-200 object-cover object-center"
+        />
+        <div class="flex flex-col gap-4 md:w-1/2">
+          <h3 class="text-2xl md:text-3xl">{tip.title}</h3>
+          <p class="text-lg md:text-xl text-foreground/70">{tip.description}</p>
+        </div>
+      </li>
+    ))
+  }
+</ul>

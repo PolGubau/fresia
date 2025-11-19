@@ -1,0 +1,23 @@
+---
+import { Gift3dCard } from "./vercel-card";
+---
+
+<section class="relative md:px-8 mx-auto w-full">
+  <div class="overflow-hidden rounded-[200px] h-[90vh]">
+    <Gift3dCard client:load />
+  </div>
+  <aside
+    class="absolute gap-4 flex flex-col bottom-1/2 left-1/2 text-background/90 p-6 rounded-md max-w-1/2"
+  >
+    <h2
+      class="text-5xl px-4 py-1 rounded-xl xl:text-7xl text-pretty backdrop-blur-md"
+    >
+      Tenim el regal perfecte
+    </h2>
+    <p
+      class="px-2 ml-2 py-1 rounded-xl md:text-2xl text-background/90 text-pretty backdrop-blur-md"
+    >
+      Regala una targeta regal de Frèsia i deixa que triïn el seu ram preferit.
+    </p>
+  </aside>
+</section>
