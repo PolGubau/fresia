@@ -2,11 +2,11 @@
   <div class="h-full mx-auto flex justify-center w-full max-w-4xl py-48">
     <div class="wrapper">
       <p class="white text-foreground text-4xl md:text-6xl">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
-        consectetur voluptatem quae ea similique adipisci reprehenderit vero
-        voluptatum, debitis exercitationem nisi ad mollitia? Molestias veniam
-        sint quisquam ea et dolorum nesciunt rem saepe id, amet vero,
-        necessitatibus esse reiciendis molestiae.
+        <!-- story telling de Frèsia -->
+        Aquest nadal volem ajudar-te a explicar la teva història amb flors. Deixa
+        que les nostres creacions florals parlin per tu i transmetin els teus sentiments
+        més profunds. Sempre amb l'elegància i la frescor que ens caracteritza, perquè
+        cada ram sigui únic i especial, igual que tu.
       </p>
     </div>
   </div>
@@ -26,7 +26,8 @@
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   gsap.registerPlugin(SplitText, ScrollTrigger);
 
-  let split, tl;
+  let split: SplitText;
+  let tl: gsap.core.Timeline;
 
   const createSplit = () => {
     split && split.revert();
