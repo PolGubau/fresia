@@ -1,43 +1,43 @@
 ---
 import Title from "./title.astro";
-import ProgressiveImage from "../../components/ProgressiveImage.astro";
 import { Image } from "astro:assets";
+import copies from "~/locales/es.json" assert { type: "json" };
 
 const fotos = [
   {
     src: "/src/assets/images/arbre_2.webp",
     height: 570,
     width: 600,
-    alt: "Foto 1",
+    alt: copies["hero.photo.alt.1"],
   },
   {
     src: "/src/assets/images/conjunt_3.webp",
-    alt: "Foto 2",
+    alt: copies["hero.photo.alt.2"],
     height: 700,
     width: 600,
   },
   {
     src: "/src/assets/images/arbre_1.webp",
-    alt: "Foto 3",
+    alt: copies["hero.photo.alt.3"],
     height: 750,
     width: 300,
   },
   {
     src: "/src/assets/images/conjunt_2.webp",
-    alt: "Foto 1",
+    alt: copies["hero.photo.alt.4"],
     height: 850,
     width: 600,
   },
   {
     src: "/src/assets/images/arbre_3.webp",
-    alt: "Foto 3",
+    alt: copies["hero.photo.alt.5"],
     height: 600,
     width: 300,
   },
 
   {
     src: "/src/assets/images/espelma_1.webp",
-    alt: "Foto 2",
+    alt: copies["hero.photo.alt.6"],
     height: 450,
     width: 600,
   },
@@ -47,7 +47,7 @@ const fotos = [
 <section class="min-h-screen flex flex-col gap-20 overflow-x-hidden">
   <header class="p-8 pt-[18vh] flex flex-col gap-8">
     <Title />
-    <p class="xl:text-xl">No se qué posar aquí, yu després em dius</p>
+    <p class="xl:text-xl">{copies["hero.subtitle"]}</p>
   </header>
 
   <ul class="flex gap-4 items-center w-screen justify-center overflow-hidden">
