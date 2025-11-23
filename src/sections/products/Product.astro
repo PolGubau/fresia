@@ -12,6 +12,7 @@ export interface Props {
 }
 
 const { producto, index, inverted } = Astro.props as Props;
+import { Image } from "astro:assets";
 ---
 
 <li
@@ -29,7 +30,9 @@ const { producto, index, inverted } = Astro.props as Props;
 
   <div class="md:w-2/3 w-full relative overflow-hidden h-screen">
     <div class="w-full h-full relative">
-      <img
+      <Image
+        width={600}
+        height={800}
         data-index={index}
         src={producto.image}
         alt={producto.nombre}
@@ -45,27 +48,48 @@ const { producto, index, inverted } = Astro.props as Props;
   gsap.registerPlugin(ScrollTrigger);
 
   const onReady = () => {
-    const images = document.querySelectorAll(".product-image");
+    const containers = document.querySelectorAll(".product-image");
 
-    images.forEach((img) => {
-      // wait for the image to be fully loaded before creating the ScrollTrigger animation
+    containers.forEach((container) => {
+      const img =
+        container.querySelector(".pi-img") || container.querySelector("img");
+      if (!img) return;
 
-      gsap.fromTo(
-        img,
-        { height: "0%", scale: 1.04 },
-        {
-          height: "100%",
-          scale: 1,
-          ease: "power3.in",
-          scrollTrigger: {
-            trigger: img,
-            start: "top 70%",
-            end: "+=500",
-            scrub: 0.6,
-            // markers: true,
+      const startAnim = () => {
+        gsap.fromTo(
+          img,
+          { yPercent: 6, scale: 1.06, opacity: 0 },
+          {
+            yPercent: -6,
+            scale: 1,
+            opacity: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: container,
+              start: "top 70%",
+              end: "+=500",
+              scrub: 0.6,
+              // markers: true,
+            },
           },
-        },
-      );
+        );
+      };
+
+      // ensure we have an HTMLImageElement to check load state
+      if (!(img instanceof HTMLImageElement)) {
+        startAnim();
+        return;
+      }
+
+      if (
+        container.classList.contains("loaded") ||
+        (img.complete && img.naturalWidth !== 0)
+      ) {
+        startAnim();
+      } else {
+        img.addEventListener("load", startAnim, { once: true });
+        img.addEventListener("error", startAnim, { once: true });
+      }
     });
   };
 

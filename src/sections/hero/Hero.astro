@@ -1,38 +1,45 @@
 ---
 import Title from "./title.astro";
+import ProgressiveImage from "../../components/ProgressiveImage.astro";
+import { Image } from "astro:assets";
 
 const fotos = [
   {
-    src: "https://picsum.photos/400/700",
+    src: "/src/assets/images/arbre_2.webp",
+    height: 570,
+    width: 600,
     alt: "Foto 1",
   },
   {
-    src: "https://picsum.photos/450/650",
+    src: "/src/assets/images/conjunt_3.webp",
     alt: "Foto 2",
+    height: 700,
+    width: 600,
   },
   {
-    src: "https://picsum.photos/510/470",
+    src: "/src/assets/images/arbre_1.webp",
     alt: "Foto 3",
+    height: 750,
+    width: 300,
   },
   {
-    src: "https://picsum.photos/600/570",
-    alt: "Foto 3",
-  },
-  {
-    src: "https://picsum.photos/400/700",
+    src: "/src/assets/images/conjunt_2.webp",
     alt: "Foto 1",
+    height: 850,
+    width: 600,
   },
   {
-    src: "https://picsum.photos/450/650",
+    src: "/src/assets/images/arbre_3.webp",
+    alt: "Foto 3",
+    height: 600,
+    width: 300,
+  },
+
+  {
+    src: "/src/assets/images/espelma_1.webp",
     alt: "Foto 2",
-  },
-  {
-    src: "https://picsum.photos/510/570",
-    alt: "Foto 3",
-  },
-  {
-    src: "https://picsum.photos/600/470",
-    alt: "Foto 3",
+    height: 450,
+    width: 600,
   },
 ];
 ---
@@ -47,10 +54,12 @@ const fotos = [
     {
       fotos.map((foto) => (
         <li>
-          <img
+          <Image
             src={foto.src}
-            width={600}
             alt={foto.alt}
+            width={foto.width}
+            style={`height: ${foto.height}px; width: ${foto.width}px;`}
+            height={foto.height}
             data-index={fotos.indexOf(foto)}
             class="w-full bg-image h-full min-w-60 md:min-w-[500px] bg-neutral-200 object-cover object-center flex-1"
           />
