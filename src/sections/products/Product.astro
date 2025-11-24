@@ -48,48 +48,24 @@ import { Image } from "astro:assets";
   gsap.registerPlugin(ScrollTrigger);
 
   const onReady = () => {
-    const containers = document.querySelectorAll(".product-image");
+    const nodes = document.querySelectorAll(".product-image");
 
-    containers.forEach((container) => {
-      const img =
-        container.querySelector(".pi-img") || container.querySelector("img");
-      if (!img) return;
-
-      const startAnim = () => {
-        gsap.fromTo(
-          img,
-          { yPercent: 6, scale: 1.06, opacity: 0 },
-          {
-            yPercent: -6,
-            scale: 1,
-            opacity: 1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: container,
-              start: "top 70%",
-              end: "+=500",
-              scrub: 0.6,
-              // markers: true,
-            },
+    nodes.forEach((node) => {
+      gsap.fromTo(
+        node,
+        { scale: 1.2, height: "5%" },
+        {
+          scale: 1,
+          height: "100%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: node,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
           },
-        );
-      };
-
-      // ensure we have an HTMLImageElement to check load state
-      if (!(img instanceof HTMLImageElement)) {
-        startAnim();
-        return;
-      }
-
-      if (
-        container.classList.contains("loaded") ||
-        (img.complete && img.naturalWidth !== 0)
-      ) {
-        startAnim();
-      } else {
-        img.addEventListener("load", startAnim, { once: true });
-        img.addEventListener("error", startAnim, { once: true });
-      }
+        },
+      );
     });
   };
 

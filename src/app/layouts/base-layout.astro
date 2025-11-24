@@ -35,6 +35,12 @@ import Footer from "~/sections/footer/Footer.astro";
 			<div id="smooth-content" class="relative min-h-screen">
 				<!--  -->
 				<main class="flex flex-col gap-32">
+					<div
+						id="preloader"
+						class="absolute inset-0 w-full h-screen bg-linear-180 from-background to-red-50 pointer-events-none"
+					>
+					</div>
+
 					<slot />
 				</main>
 				<!--  -->
@@ -70,4 +76,20 @@ import Footer from "~/sections/footer/Footer.astro";
 	}
 
 	animateHeading();
+
+	function hidePreloader() {
+		const preloader = document.getElementById("preloader") as HTMLElement;
+		gsap.to(preloader, {
+			autoAlpha: 0,
+			duration: 1,
+			delay: 0.5,
+			onComplete: () => {
+				preloader.style.display = "none";
+			},
+		});
+	}
+
+	window.addEventListener("load", () => {
+		hidePreloader();
+	});
 </script>
