@@ -1,18 +1,20 @@
 ---
-export interface Producto {
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+export interface Product {
   nombre: string;
   description: string;
-  image: string;
+  image: ImageMetadata;
 }
 
 export interface Props {
-  producto: Producto;
+  producto: Product;
   index: number;
   inverted?: boolean;
 }
 
 const { producto, index, inverted } = Astro.props as Props;
-import { Image } from "astro:assets";
 ---
 
 <li

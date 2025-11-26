@@ -1,16 +1,18 @@
 ---
-import Product from "./Product.astro";
+import Product, { type Product as ProductType } from "./Product.astro";
+import product1 from "../../assets/images/arbre_2.webp";
+import product2 from "../../assets/images/arbre_1.webp";
 
-const productos = [
+const productos: ProductType[] = [
   {
     nombre: "Ramo Clásico",
     description: "Un ramo de flores clásicas para cualquier ocasión.",
-    image: "/src/assets/images/arbre_2.webp",
+    image: product1,
   },
   {
     nombre: "Ramo Moderno de Navidad",
     description: "Diseño moderno con flores exóticas.",
-    image: "/src/assets/images/arbre_2.webp",
+    image: product2,
   },
 ];
 ---
