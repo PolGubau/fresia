@@ -26,5 +26,6 @@
     "three": "^0.181.2"
   },
   "devDependencies": {
-    }
+    "sharp": "^0.34.5"
+  }
 }
