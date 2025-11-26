@@ -16,7 +16,7 @@ import { MeshLineGeometry, MeshLineMaterial } from 'meshline'
 extend({ MeshLineGeometry, MeshLineMaterial })
 
 // Preload remote assets to avoid flicker when component mounts
-useGLTF.preload('/media/objects/card.glb')
+useGLTF.preload('/media/objects/tag.glb')
 useTexture.preload('/media/images/logo.jpg')
 
 export function Gift3dCard() {
@@ -56,7 +56,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
   const segmentProps = { type: 'dynamic', canSleep: true, colliders: false, angularDamping: 2, linearDamping: 2 }
 
   // Load the GLTF model (card + clamp meshes) and the band texture
-  const { nodes, materials } = useGLTF('/media/objects/card.glb')
+  const { nodes, materials } = useGLTF('/media/objects/tag.glb')
   const texture = useTexture('/media/images/logo.jpg')
   // const texture = useTexture('https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/SOT1hmCesOHxEYxL7vkoZ/c57b29c85912047c414311723320c16b/band.jpg')
 

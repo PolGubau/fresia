@@ -1,5 +1,6 @@
 ---
 import { Gift3dCard } from "./vercel-card";
+import copies from "~/locales/ca.json" assert { type: "json" };
 ---
 
 <section class="relative mx-auto w-full flex flex-col-reverse">
@@ -12,20 +13,20 @@ import { Gift3dCard } from "./vercel-card";
     <h2
       class="text-5xl px-4 py-1 rounded-xl xl:text-7xl text-pretty backdrop-blur-md"
     >
-      Tenim el regal perfecte
+      {copies["gift_card.title"]}
     </h2>
     <p
       class="px-2 ml-2 py-1 rounded-xl md:text-2xl md:text-background/60 text-pretty backdrop-blur-md max-w-xl"
     >
-      Regala una targeta regal de Frèsia i deixa que triïn el seu ram preferit.
+      {copies["gift_card.desc"]}
     </p>
     <a
-      href="https://www.fresiamataro.com/"
+      href={copies["gift_card.url"]}
       target="_blank"
       rel="noopener noreferrer"
       class="self-start px-4 py-2 rounded-xl bg-pretty text-background hover:bg-pretty/90 transition-colors hover:underline backdrop-blur-md md:text-xl"
     >
-      Troba-les aqu&iacute;
+      {copies["gift_card.cta"]}
     </a>
   </aside>
 </section>

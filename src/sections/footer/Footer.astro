@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import footerImage from "../../assets/images/footer.webp";
+import copies from "~/locales/ca.json" assert { type: "json" };
 ---
 
 <section class="">
@@ -24,10 +25,10 @@ import footerImage from "../../assets/images/footer.webp";
           target="_blank"
           rel="noopener noreferrer"
         >
-          @fresia
+          {copies["footer.handle"]}
         </a>
         <a href="tel:+654321987" target="_blank" rel="noopener noreferrer">
-          654321987
+          {copies["footer.phone"]}
         </a>
       </div>
 
@@ -39,7 +40,7 @@ import footerImage from "../../assets/images/footer.webp";
           rel="noopener noreferrer"
           href="https://maps.app.goo.gl/YnL3sy1KEZQwKZWHA"
         >
-          Carrer d'En Palau, 22, Mataró
+          {copies["footer.address"]}
         </a>
       </div>
     </nav>
