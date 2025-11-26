@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import copies from "src/locales/es.json";
 const foto = {
   url: "/src/assets/images/bares.webp",
 };
@@ -7,14 +8,18 @@ const foto = {
 
 <section class="p-20 flex flex-col gap-36">
   <header class="flex flex-col gap-2 justify-center text-center">
-    <h2 class="text-3xl md:text-4xl xl:text-6xl">Amb flors millor</h2>
-    <p>Aquest nadal tenim el ram perfecte per a qui estimes</p>
+    <h2 class="text-3xl md:text-4xl xl:text-6xl">
+      {copies["mainProduct.heading"]}
+    </h2>
+    <p>
+      {copies["mainProduct.sub"]}
+    </p>
   </header>
 
   <Image
     id="main-product-image"
     src={foto.url}
-    alt="Ram de flors de Frèsia"
+    alt={copies["mainProduct.heading"]}
     width={800}
     height={600}
     class="mx-auto bg-neutral-200"

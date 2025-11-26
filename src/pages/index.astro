@@ -6,6 +6,7 @@ import Products from "~/sections/products/Products.astro";
 import Storytelling from "~/sections/storytelling/Storytelling.astro";
 import CuidarPoinsettia from "~/sections/cuidar-poinsettia/CuidarPoinsettia.astro";
 import GiftCard from "~/sections/gift-card/GiftCard.astro";
+import Footer from "~/sections/footer/Footer.astro";
 ---
 
 <BaseLayout>
@@ -13,6 +14,10 @@ import GiftCard from "~/sections/gift-card/GiftCard.astro";
 	<MainProduct />
 	<CuidarPoinsettia />
 	<Products />
+
 	<Storytelling />
-	<GiftCard />
+	<div class="flex flex-col md:bg-black">
+		<GiftCard />
+		<Footer />
+	</div>
 </BaseLayout>

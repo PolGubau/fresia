@@ -1,188 +1,90 @@
 ---
+import { Image } from "astro:assets";
+
 const tips = [
-  {
-    title: "Riego",
-    description:
-      "Riega la planta cuando la capa superior del suelo esté seca al tacto. Evita el exceso de agua para prevenir el encharcamiento.",
-    image: "/src/assets/images/arbre_2.webp",
-  },
   {
     title: "Temperatura",
     description:
-      "Mantén la poinsetia en un ambiente con temperaturas entre 18-22°C. Evita corrientes de aire frío o caliente.",
-    image: "/src/assets/images/arbre_2.webp",
+      "Posa la teva poinsettia en un lloc càlid, entre 18-22°C. Evita corrents d'aire fred i canvis bruscos de temperatura.",
+    image: "/src/assets/images/bares.webp",
   },
   {
-    title: "Fertilización",
+    title: "Llum",
     description:
-      "Fertiliza la planta cada 4-6 semanas durante la temporada de crecimiento con un fertilizante equilibrado.",
-    image: "/src/assets/images/arbre_2.webp",
+      "Les poinsetties necessiten molta llum indirecta. Col·loca-les prop d'una finestra assolellada, però evita la llum solar directa que pot cremar les fulles.",
+    image: "/src/assets/images/conjunt_2.webp",
+  },
+  {
+    title: "Reg",
+    description:
+      "Regula la teva poinsettia quan la capa superior del sòl estigui seca al tacte. Evita l'excés d'aigua i assegura't que el test tingui un bon drenatge.",
+    image: "/src/assets/images/arbre_3.webp",
+  },
+  {
+    title: "Humitat",
+    description:
+      "Les poinsetties prefereixen un ambient humit. Pots augmentar la humitat ambiental utilitzant un humidificador o col·locant un plat amb aigua a prop de la planta.",
+    image: "/src/assets/images/espelma_1.webp",
+  },
+  {
+    title: "Fertilització",
+    description:
+      "Fertilitza la teva poinsettia cada dues setmanes amb un fertilitzant equilibrat durant la temporada de creixement (primavera i estiu). Redueix la fertilització a l'hivern.",
+    image: "/src/assets/images/arbre_1.webp",
+  },
+  {
+    title: "Poda",
+    description:
+      "Després de la temporada festiva, poda la teva poinsettia per fomentar un creixement saludable. Retalla les tiges a uns 15 cm per sobre del sòl.",
+    image: "/src/assets/images/conjunt_3.webp",
   },
 ];
 ---
 
-<div id="smooth-wrapper">
-  <div id="smooth-content">
-    <section>
-      <h1>Here comes the gallery</h1>
-    </section>
-
-    <section id="portfolio">
-      <div class="container-fluid">
-        <div class="horiz-gallery-wrapper">
-          <div class="horiz-gallery-strip">
-            <div class="project-wrap">
-              <img
-                src="https://images.unsplash.com/photo-1570018144715-43110363d70a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2531&q=80"
-              />
-              <h2>Image 1</h2>
-            </div>
-            <div class="project-wrap">
-              <img
-                src="https://images.unsplash.com/photo-1570824104967-27599c232b4b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2559&q=80"
-              />
-              <h2>Image 2</h2>
-            </div>
-            <div class="project-wrap">
-              <img
-                src="https://images.unsplash.com/photo-1570018144715-43110363d70a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2531&q=80"
-              />
-              <h2>Image 3</h2>
-            </div>
-            <div class="project-wrap">
-              <img
-                src="https://images.unsplash.com/photo-1570824104967-27599c232b4b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2559&q=80"
-              />
-              <h2>Image 4</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<section class="w-full grid grid-cols-[1fr_2fr] gap-10 px-16">
+  <div class="">
+    <h2 class="text-4xl md:text-6xl font-semibold mb-6 text-balance">
+      Com cuidar la teva Poinsettia
+    </h2>
+    <p class="max-w-sm text-pretty text-foreground/80">
+      Aquí tens alguns consells útils per mantenir la teva poinsettia saludable
+      i vibrant durant tota la temporada festiva i més enllà.
+    </p>
   </div>
-</div>
+
+  <ul class="flex overflow-x-auto rounded-2xl gap-4">
+    {
+      tips.map((tip) => (
+        <li class="relative flex flex-col min-w-[600px] rounded-2xl overflow-hidden">
+          {/* Imagen */}
+          <Image
+            src={tip.image}
+            alt={tip.title}
+            width={600}
+            height={600}
+            class="w-full h-[500px] object-cover object-center"
+          />
+
+          {/* Overlay con degradado + texto */}
+          <div class="absolute bottom-0 left-0 w-full p-6 bg-linear-to-t from-black pt-60 text-white flex flex-col gap-2">
+            <h3 class="text-2xl font-semibold text-balance">{tip.title}</h3>
+            <p class="text-white/80 text-pretty max-w-md">{tip.description}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
 <style>
-  body {
-    overflow-x: hidden;
-    margin: 0;
+  ul {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+    scroll-snap-type: x mandatory;
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
-  .row,
-  .section,
-  section {
-    position: relative;
-    overflow: hidden;
-  }
-  .section,
-  section {
-    padding: 80px 0;
-    text-align: center;
-  }
-  section:nth-child(1) {
-    background: blue;
-    color: white;
-  }
-  section:nth-child(3) {
-    background: green;
-    color: white;
-  }
-  .container-fluid {
-    width: 100%;
-    padding-right: 0;
-    padding-left: 0;
-    margin-right: auto;
-    margin-left: auto;
-  }
-
-  .horiz-gallery-strip,
-  .horiz-gallery-wrapper {
-    display: flex;
-    flex-wrap: nowrap;
-    will-change: transform;
-    position: relative;
-  }
-
-  .project-wrap {
-    width: 50vw;
-    padding: 2rem;
-    box-sizing: content-box;
-  }
-  .project-wrap img {
-    width: 100%;
-    height: auto;
+  li {
+    scroll-snap-align: center;
   }
 </style>
-
-<script>
-  import { gsap } from "gsap";
-  import ScrollTrigger from "gsap/ScrollTrigger";
-  import ScrollSmoother from "gsap/ScrollSmoother";
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
-  //Comment me out to see issue
-  const smoother = ScrollSmoother.create({
-    wrapper: "#smooth-wrapper",
-    content: "#smooth-content",
-    smooth: 2,
-    normalizeScroll: true,
-    ignoreMobileResize: true,
-    effects: true,
-    preventDefault: true,
-  });
-
-  //Horizontal Scroll Galleries
-  if (document.getElementById("portfolio")) {
-    const horizontalSections = gsap.utils.toArray(".horiz-gallery-wrapper");
-
-    horizontalSections.forEach(function (sec, i) {
-      const pinWrap = sec.querySelector(".horiz-gallery-strip");
-
-      let pinWrapWidth;
-      let horizontalScrollLength;
-
-      function refresh() {
-        pinWrapWidth = pinWrap.scrollWidth;
-        horizontalScrollLength = pinWrapWidth - window.innerWidth;
-      }
-
-      // window.addEventListener("load", function () {
-      refresh();
-      // Pinning and horizontal scrolling
-      let scrollTween = gsap.to(pinWrap, {
-        scrollTrigger: {
-          scrub: true,
-          trigger: sec,
-          pin: sec,
-          start: "center center",
-          end: () => `+=${pinWrapWidth}`,
-          invalidateOnRefresh: true,
-        },
-        x: () => -horizontalScrollLength,
-        ease: "none",
-      });
-
-      pinWrap.querySelectorAll("[data-speed-x]").forEach((el, i) => {
-        let speed = parseFloat(el.getAttribute("data-speed-x"));
-        gsap.to(el, {
-          x: () => (1 - speed) * (window.innerWidth + el.offsetWidth),
-          ease: "none",
-          scrollTrigger: {
-            containerAnimation: scrollTween,
-            trigger: el,
-            onRefresh: (self) => {
-              let start = Math.max(0, self.start);
-              self.setPositions(
-                start,
-                start + (self.end - self.start) / Math.abs(speed),
-              ); // adjust for how long it'll stay in view
-              self.animation.progress(0);
-            },
-            scrub: true,
-          },
-        });
-      });
-
-      ScrollTrigger.addEventListener("refreshInit", refresh);
-      // });
-    });
-  }
-</script>
