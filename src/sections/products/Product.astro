@@ -27,7 +27,15 @@ const { producto, index, inverted } = Astro.props as Props;
     },
   ]}
 >
-  <div class="p-4 flex flex-col gap-2 justify-center h-full md:w-1/3 w-full">
+  <div
+    class="p-4 flex flex-col gap-2 justify-center h-full md:w-1/3 w-full"
+    class:list={[
+      {
+        "text-right items-end": !inverted,
+        "text-left items-start": inverted,
+      },
+    ]}
+  >
     <h3 class="text-2xl md:text-7xl font-semibold">{producto.nombre}</h3>
     <p class="text-sm md:text-lg text-foreground/70">{producto.description}</p>
     <a href={producto.ctaLink} class="mt-4 inline-block">

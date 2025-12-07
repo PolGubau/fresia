@@ -22,7 +22,7 @@ const productos: ProductType[] = [
 ];
 ---
 
-<ul class="flex flex-col gap-36 items-center py-20 px-8">
+<ul class="flex flex-col gap-36 items-center py-20 px-4">
   {
     productos.map((producto, index) => (
       <Product producto={producto} index={index} inverted={index % 2 === 1} />
