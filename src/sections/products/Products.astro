@@ -1,18 +1,23 @@
 ---
 import Product, { type Product as ProductType } from "./Product.astro";
-import product1 from "../../assets/images/arbre_2.webp";
+import product1 from "../../assets/images/galet.webp";
 import product2 from "../../assets/images/arbre_1.webp";
+import copies from "src/locales/ca.json";
 
 const productos: ProductType[] = [
   {
-    nombre: "Ramo Clásico",
-    description: "Un ramo de flores clásicas para cualquier ocasión.",
+    nombre: copies["products.0.name"],
+    description: copies["products.0.desc"],
     image: product1,
+    ctaLabel: copies["products.0.cta"],
+    ctaLink: copies["products.0.link"],
   },
   {
-    nombre: "Ramo Moderno de Navidad",
-    description: "Diseño moderno con flores exóticas.",
+    nombre: copies["products.1.name"],
+    description: copies["products.1.desc"],
     image: product2,
+    ctaLabel: copies["products.1.cta"],
+    ctaLink: copies["products.1.link"],
   },
 ];
 ---

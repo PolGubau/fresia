@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import mainProductImage from "../../assets/images/bares.webp";
+import mainProductImage from "../../assets/images/ramnadal.webp";
 
 import copies from "src/locales/ca.json";
 const foto = {
@@ -24,7 +24,7 @@ const foto = {
     alt={copies["mainProduct.heading"]}
     width={800}
     height={600}
-    class="mx-auto bg-neutral-200"
+    class="mx-auto"
   />
 </section>
 
@@ -38,8 +38,8 @@ const foto = {
     "#main-product-image",
     { y: 0, scale: 1 },
     {
-      y: -150,
-      scale: 1.2,
+      y: -250,
+      scale: 1.5,
       scrollTrigger: {
         trigger: "#main-product-image",
         start: "top bottom",

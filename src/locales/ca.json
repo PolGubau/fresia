@@ -11,6 +11,22 @@
   "mainProduct.heading": "Ram de nadal",
   "mainProduct.sub": "La joia de la corona",
 
+
+  "products.0.name": "El galet...",
+  "products.0.desc": "Que mai falti a la taula",
+  "products.0.cta": "Descobreix-lo",
+  "products.0.link": "https://www.fresiamataro.com/",
+
+
+
+  "products.1.name": "Vesteix l'arbre",
+  "products.1.desc": "Llaços i flors de decoració ",
+"products.1.cta": "Descobreix-lo",
+  "products.1.link": "https://www.fresiamataro.com/",
+
+  "cuidar-poinsettia.title": "Com cuidar la teva Poinsettia",
+  "cuidar-poinsettia.desc": "Consells per mantenir-la sana i bonica durant tota la temporada nadalenca.",
+
   "storytelling.p1": "Aquest nadal volem ajudar-te a explicar la teva història amb flors.",
   "storytelling.p2": "Deixa que les nostres creacions florals parlin per tu i transmetin els teus sentiments més profunds.",
 
